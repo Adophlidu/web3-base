@@ -1,27 +1,24 @@
-name: CI Github Pages
+name: Build and Deploy
 on:
-  #监听push操作
   push:
     branches:
-      - main # 这里只配置了main分支，所以只有推送main分支才会触发以下任务
+      - main
+permissions:
+  contents: write
 jobs:
-  # 任务ID
   build-and-deploy:
-    # 运行环境
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
-    # 步骤
     steps:
-      # 官方action，将代码拉取到虚拟机
-      - name: Checkout  ️ 
+      - name: Checkout 🛎️
         uses: actions/checkout@v3
 
-      - name: Install and Build   # 安装依赖、打包，如果提前已打包好无需这一步
+      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: |
-          npm install
+          npm ci
           npm run build
 
-      - name: Deploy   # 部署
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages # 部署后提交到那个分支
-          folder: dist # 这里填打包好的目录名称
+          folder: dist # The folder the action should deploy.
