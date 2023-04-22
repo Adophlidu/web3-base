@@ -6,5 +6,11 @@
     "lib": ["es5", "dom"],
     "types": ["cypress", "node", "./support/component.d.ts"]
   },
-  "include": ["../node_modules/cypress", "**/*spec.ts", "**/*spec.tsx", "../src/**/*.tsx", "../tests/e2e/**/*.cy.ts"]
+  "include": [
+    "../node_modules/cypress",
+    "**/*spec.ts",
+    "**/*spec.tsx",
+    "../src/**/*.tsx",
+    "../tests/e2e/**/*.cy.ts"
+  ]
 }
