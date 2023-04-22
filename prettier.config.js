@@ -7,5 +7,5 @@ module.exports = {
   TrailingCooma: 'all',
   bracketSpacing: true,
   arrowParens: 'avoid',
-  endOfLine: 'auto'
+  endOfLine: 'auto',
 };

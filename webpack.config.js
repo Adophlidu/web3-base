@@ -1,14 +1,14 @@
-const { resolve } = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { resolve } = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const _resolve = (...args) => resolve(process.cwd(), ...args)
+const _resolve = (...args) => resolve(process.cwd(), ...args);
 
 /**
  * @type {import('webpack').Configuration}
-*/
+ */
 module.exports = {
   entry: {
-    main: _resolve('./src/index.tsx')
+    main: _resolve('./src/index.tsx'),
   },
   output: {
     filename: '[name].[contenthash].js',
@@ -22,10 +22,10 @@ module.exports = {
         test: /\.(ts|tsx)/,
         include: /(src|cypress|tests)/,
         use: {
-          loader: 'swc-loader'
-        }
-      }
-    ]
+          loader: 'swc-loader',
+        },
+      },
+    ],
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.jsx'],
@@ -33,17 +33,17 @@ module.exports = {
       '@': _resolve('./src'),
       '@components': _resolve('./src/components'),
       '@pages': _resolve('./src/pages'),
-      '@layouts': _resolve('./src/layouts')
-    }
+      '@layouts': _resolve('./src/layouts'),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'web3-base',
-      template: resolve('./public/index.html')
-    })
+      template: resolve('./public/index.html'),
+    }),
   ],
   devServer: {
     port: 9999,
-    hot: true
-  }
-}
+    hot: true,
+  },
+};
