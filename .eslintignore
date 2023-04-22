@@ -1,0 +1,12 @@
+node_modules/
+backstop_data/
+dist/
+docs/
+config/
+tests/
+cypress/
+.eslintrc
+*.config.js
+*.config.ts
+src/types
+.eslintrc.js
