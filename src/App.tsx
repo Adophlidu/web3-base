@@ -1,14 +1,13 @@
-import Counter from '@components/Counter';
-import { PhoneNumberInput } from '@components/PhoneNumberInput';
+import { useEffect, useState } from 'react';
+import { useTimeout } from './hooks/use-settimeout';
 
-const App = () => {
-  return (
-    <div>
-      <h1>web3 base standard structure</h1>
-      <Counter />
-      <PhoneNumberInput />
-    </div>
-  );
-};
+function App() {
+  const [callback, setCallback] = useState(() => () => console.log('callback1'));
+  useTimeout(callback, 1000);
+  useEffect(() => {
+    setTimeout(() => setCallback(() => () => console.log('callback2')), 700);
+  }, []);
+  return null;
+}
 
-export default App
+export default App;
