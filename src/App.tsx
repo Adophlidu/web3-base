@@ -1,13 +1,10 @@
-import { useEffect, useState } from 'react';
-import { useTimeout } from './hooks/use-settimeout';
-
 function App() {
-  const [callback, setCallback] = useState(() => () => console.log('callback1'));
-  useTimeout(callback, 1000);
-  useEffect(() => {
-    setTimeout(() => setCallback(() => () => console.log('callback2')), 700);
-  }, []);
-  return null;
+  console.log(process.env.ENV);
+  return (
+    <div>
+      <h1>当前的环境：{process.env.ENV}</h1>
+    </div>
+  );
 }
 
 export default App;

@@ -1,12 +1,26 @@
-const { resolve } = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {
+  resolve
+} = require('path');
+const parse = require('yargs-parser') // 获取运行命令的参数
+const {
+  merge
+} = require('webpack-merge'); // 合并webpack的配置
+const Dotenv = require('dotenv-webpack'); // 加载process.env，将.env文件中的变量写入process.env中
 
 const _resolve = (...args) => resolve(process.cwd(), ...args);
+
+const argv = parse(process.argv.slice(2))
+const _mode = argv.mode
+let _mergeConfig = {}
+
+if (_mode) {
+  _mergeConfig = require(`./config/webpack.config.${_mode}`)
+}
 
 /**
  * @type {import('webpack').Configuration}
  */
-module.exports = {
+const baseConfig = {
   entry: {
     main: _resolve('./src/index.tsx'),
   },
@@ -17,15 +31,13 @@ module.exports = {
     // publicPath: './'
   },
   module: {
-    rules: [
-      {
-        test: /\.(ts|tsx)/,
-        include: /(src|cypress|tests)/,
-        use: {
-          loader: 'swc-loader',
-        },
+    rules: [{
+      test: /\.(ts|tsx)/,
+      include: /(src|cypress|tests)/,
+      use: {
+        loader: 'swc-loader',
       },
-    ],
+    }, ],
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.jsx'],
@@ -37,13 +49,10 @@ module.exports = {
     },
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'web3-base',
-      template: resolve('./public/index.html'),
-    }),
-  ],
-  devServer: {
-    port: 9999,
-    hot: true,
-  },
+    new Dotenv({
+      path: _resolve(`.env.${_mode}`)
+    })
+  ]
 };
+
+module.exports = merge(_mergeConfig, baseConfig)
