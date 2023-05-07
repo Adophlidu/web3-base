@@ -1,11 +1,11 @@
-import { FC, useState } from 'react';
+import { FC, useState } from 'react'
 
 type Props = {
-  initialValue?: number;
-};
+  initialValue?: number
+}
 
 const Counter: FC<Props> = ({ initialValue = 0 }) => {
-  const [count, setCount] = useState(initialValue);
+  const [count, setCount] = useState(initialValue)
 
   return (
     <div>
@@ -17,7 +17,7 @@ const Counter: FC<Props> = ({ initialValue = 0 }) => {
         increment
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default Counter;
+export default Counter

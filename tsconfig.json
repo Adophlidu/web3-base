@@ -32,7 +32,10 @@
       "@components/*": ["src/components/*"],
       "@assets/*": ["src/assets/*"],
       "@pages/*": ["src/pages/*"],
-      "@layouts/*": ["src/layouts/*"]
+      "@layouts/*": ["src/layouts/*"],
+      "@connectors/*": ["src/connectors/*"],
+      "@config/*": ["src/config/*"],
+      "@utils/*": ["src/utils/*"]
     },
     "types": ["cypress", "node"]
   },

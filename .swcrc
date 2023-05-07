@@ -19,7 +19,7 @@
         "useBuiltins": true
       }
     },
-    "target": "es2015",
+    "target": "esnext",
     "loose": true,
     "externalHelpers": true,
     "keepClassNames": false

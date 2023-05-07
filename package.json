@@ -11,7 +11,7 @@
     "cypress:open": "cypress open",
     "prepare": "husky install",
     "lint:fix": "tsc --noEmit & eslint ./src --ext .ts,.tsx,.js --fix",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "tsc && eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "keywords": [],
   "author": "",
@@ -46,6 +46,12 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@ethersproject/units": "^5.7.0",
+    "@web3-react/core": "^8.2.0",
+    "@web3-react/metamask": "^8.2.1",
+    "@web3-react/walletconnect": "^8.2.0",
+    "@web3-react/walletconnect-v2": "^8.3.0",
+    "@web3modal/standalone": "^2.3.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "yargs-parser": "^21.1.1"
