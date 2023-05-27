@@ -1,13 +1,5 @@
 pipeline {
-    agent any
-    
     stages {
-        stage('安装Node.js') {
-            steps {
-                sh 'sudo curl -sL https://deb.nodesource.com/setup_14.x | bash -'
-                sh 'sudo apt-get install -y nodejs'
-            }
-        }
         stage('安装依赖') {
             steps {
                 // 执行安装依赖的命令
