@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('安装Node.js') {
             steps {
-                sh 'suod curl -sL https://deb.nodesource.com/setup_14.x | bash -'
-                sh 'suod apt-get install -y nodejs'
+                sh 'sudo curl -sL https://deb.nodesource.com/setup_14.x | bash -'
+                sh 'sudo apt-get install -y nodejs'
             }
         }
         stage('安装依赖') {
