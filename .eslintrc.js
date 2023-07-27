@@ -20,5 +20,7 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.eslint.json',
   },
-  rules: {},
-};
+  rules: {
+    'import/extensions': ['error', 'never'],
+  },
+}
